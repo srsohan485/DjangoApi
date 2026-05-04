@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'students',
     'api',
     'employes.apps.EmployesConfig',
+    'blogs',
 ]
 
 MIDDLEWARE = [
