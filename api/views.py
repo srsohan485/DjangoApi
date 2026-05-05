@@ -11,6 +11,8 @@ from rest_framework import viewsets
 from blogs.serializers import BlogSerializer, CommentSerializer
 from blogs.models import Blog,Comment
 from .pagination import CustomPagination
+from employes.filters import EmployeeFilter
+from django_filters.rest_framework import DjangoFilterBackend
 
 @api_view(['GET', 'POST'])
 def studentsView(request):
@@ -159,7 +161,8 @@ class EmployeeViewset(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer   
     pagination_class = CustomPagination   
-    filterset_fields = ['designation']
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = EmployeeFilter
 
 class BlogsView(generics.ListCreateAPIView):
     queryset = Blog.objects.all()
